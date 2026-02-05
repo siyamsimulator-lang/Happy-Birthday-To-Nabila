@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Nabila</title>
+<style>
+body{
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom,#ffd6e8,#fbe6f0);
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* Name animation */
+h1{
+  color:#d63384;
+  font-size:2.8em;
+  margin:20px 0 10px 0;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow{
+  from{ text-shadow:0 0 10px pink;}
+  to{ text-shadow:0 0 30px hotpink;}
+}
+
+/* Card / Slideshow */
+.card{
+  width:90%;
+  max-width:500px;
+  margin:auto;
+  background: rgba(255,255,255,0.9);
+  border-radius:25px;
+  padding:15px;
+  box-shadow:0 0 20px rgba(0,0,0,0.15);
+  position:relative;
+}
+
+.slideshow img{
+  width:100%;
+  border-radius:20px;
+  display:none;
+  box-shadow:0 0 15px pink;
+}
+
+/* Buttons */
+button{
+  background:#ff69b4;
+  border:none;
+  padding:12px 25px;
+  font-size:18px;
+  border-radius:30px;
+  cursor:pointer;
+  color:white;
+  margin:15px 5px;
+  box-shadow:0 0 10px #ffb6c1;
+}
+button:hover{background:#ff1493;}
+
+/* Falling flowers */
+.flower{
+  position:fixed;
+  top:-50px;
+  font-size:22px;
+  animation: fall linear infinite;
+  pointer-events:none;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Fireworks */
+.firework{
+  position:fixed;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  animation: explode 1s ease-out forwards;
+}
+@keyframes explode{
+  to{ transform:scale(20); opacity:0;}
+}
+
+/* Cake */
+#cakeArea{
+  display:none;
+  margin-top:20px;
+}
+.candle{
+  font-size:40px;
+}
+
+/* Floating secret message */
+#secretMsg{
+  display:none;
+  position:fixed;
+  top:30%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:80%;
+  max-width:400px;
+  background: rgba(255,255,255,0.95);
+  border-radius:25px;
+  padding:20px;
+  color:#c2185b;
+  font-size:16px;
+  box-shadow:0 0 20px rgba(255,105,180,0.5);
+  animation: floatMsg 4s ease-in-out infinite alternate;
+  z-index:1000;
+  text-align:left;
+  white-space: pre-line;
+}
+@keyframes floatMsg{
+  0%{transform:translate(-50%, -52%);}
+  50%{transform:translate(-50%, -48%);}
+  100%{transform:translate(-50%, -52%);}
+}
+</style>
+</head>
+<body>
+
+<h1>🎉 Happy Birthday NABILA 🎉</h1>
+
+<div class="card">
+
+  <!-- Slideshow Images -->
+  <div class="slideshow">
+    <img src="https://i.ibb.co.com/WNxkx5xZ/Whats-App-Image-2026-02-05-at-11-50-58-AM.jpg" alt="Princess 1">
+    <img src="https://i.pinimg.com/736x/9d/2c/d3/9d2cd3fbb918d054b3ed4b5ad2d65844.jpg" alt="Princess 2">
+    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQDDCWRkNtIaUiaD1ZkK-LX4GZOdbGP7J5PU1JS4bp5OZjmurIy" alt="Princess 3">
+  </div>
+
+  <p>আমার জীবনের সবচেয়ে সুন্দর বন্ধুর জন্য 💖</p>
+
+  <button onclick="showCake()">🎁 Click for Surprise Cake</button>
+  <button onclick="showSecret()">🔮 Click to see Secret Message</button>
+
+  <div id="cakeArea">
+    <h2>🎂 হাওয়া দিয়ে কেকের মোম নিভাও 🎂</h2>
+    <div id="candle" class="candle">🕯️🕯️🕯️</div>
+  </div>
+
+  <div id="secretMsg">
+শুভ জন্মদিন নাবিলা 🌸🎉  
+তুমি শুধু আমার বেস্ট ফ্রেন্ড না, তুমি আমার জীবনের সেই মানুষটা—যার সাথে হাসি শেয়ার করলে হাসি বাড়ে, আর কষ্ট বললে কষ্ট হালকা হয়ে যায়।  
+যখন থেকে তোমার সাথে বন্ধুত্ব হয়েছে, তখন থেকেই আমার মনটা হালকা হয়ে গেছে, শুধু মন চাই আমার মনের সব কথা তোমাকে বলে দেই।  
+
+আমাদের বন্ধুত্বটা কোনো একদিনে তৈরি হয়নি, এটা ছোট ছোট মুহূর্ত, বিশ্বাস আর পাশে থাকার গল্পে গড়া।  
+তোমার এই নতুন বছরে আমি চাই—তুমি সবসময় এমনই থাকো, আর আমি যেন সবসময় তোমার পাশে থাকতে পারি।  
+
+Once Again,  
+Happy Birthday My Best Friend 💖
+  </div>
+
+</div>
+
+<script>
+/* Slideshow */
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slideshow img');
+function showSlides(){
+  slides.forEach(img=>img.style.display='none');
+  slideIndex++;
+  if(slideIndex>slides.length) slideIndex=1;
+  slides[slideIndex-1].style.display='block';
+  setTimeout(showSlides,3000);
+}
+showSlides();
+
+/* Falling flowers */
+const flowers=["🌸","🌷","🌹","💮"];
+setInterval(()=>{
+  let f=document.createElement("div");
+  f.className="flower";
+  f.innerText=flowers[Math.floor(Math.random()*flowers.length)];
+  f.style.left=Math.random()*100+"vw";
+  f.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),8000);
+},500);
+
+/* Fireworks */
+setInterval(()=>{
+  let fw=document.createElement("div");
+  fw.className="firework";
+  fw.style.left=Math.random()*100+"vw";
+  fw.style.top=Math.random()*50+"vh";
+  fw.style.background=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(fw);
+  setTimeout(()=>fw.remove(),1000);
+},1200);
+
+/* Cake */
+function showCake(){
+  document.getElementById("cakeArea").style.display="block";
+}
+
+/* Secret Message */
+function showSecret(){
+  document.getElementById("secretMsg").style.display="block";
+}
+
+/* Microphone blow detection */
+const candle = document.getElementById("candle");
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const analyser = audioContext.createAnalyser();
+    const microphone = audioContext.createMediaStreamSource(stream);
+    microphone.connect(analyser);
+    analyser.fftSize = 256;
+    const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+    function detectBlow(){
+      analyser.getByteFrequencyData(dataArray);
+      let sum = dataArray.reduce((a,b)=>a+b,0);
+      if(sum > 2000){  // adjust sensitivity
+        candle.innerText = "💨💨💨";
+        showSecret();
+      } else {
+        requestAnimationFrame(detectBlow);
+      }
+    }
+    detectBlow();
+  }).catch(err=>{
+    console.log("Microphone access denied or unavailable:", err);
+    candle.onclick=()=>{
+      candle.innerText="💨💨💨";
+      showSecret();
+    }
+  });
+} else {
+  candle.onclick=()=>{
+    candle.innerText="💨💨💨";
+    showSecret();
+  }
+}
+</script>
+
+</body>
+</html>
